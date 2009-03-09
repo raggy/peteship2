@@ -23,6 +23,9 @@ class GraphicsHandler():
                 glBindTexture(GL_TEXTURE_2D, 0)
                 glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, surface.get_width(), surface.get_height(), 0,\
                               GL_RGBA, GL_UNSIGNED_BYTE, textureData )
-                glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
-                glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
+#                gluBuild2DMipmaps(GL_TEXTURE_2D, 3, surface.get_width(), \
+#                    surface.get_height(), GL_RGBA, GL_UNSIGNED_BYTE, textureData)
+                glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
+                glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
+#                glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR)
     
