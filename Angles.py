@@ -3,7 +3,6 @@
 #  Peteship
 #
 #  Created by Pete Lord on 05/03/2009.
-#  Copyright (c) 2009 Coventry University. All rights reserved.
 #
 import math, Misc
 
