@@ -7,7 +7,7 @@
 #  Copyright (c) 2009 Turn Head Studios. All rights reserved.
 #
 
-import sys, os, pygame, math, Entities, TestMap, Options
+import sys, os, pygame, math, time, Entities, TestMap, Options
 #
 ## Not until we've got alot of calcs going on!
 #try:
@@ -36,7 +36,7 @@ def main(map, players):
     # Note on possible efficiency improvement: make a list of all ships on screen at the start of the frame
 
     while running:
-        clock.tick(60)
+        clock.tick(60) # limit to 60 fps.
         pygame.msg.message
 
         for event in pygame.event.get(pygame.KEYDOWN):

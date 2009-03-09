@@ -5,7 +5,7 @@
 #  Created by Pete Lord on 22/12/2008.
 #  Copyright (c) 2008 __MyCompanyName__. All rights reserved.
 #
-import pygame, os, Options, Views, Maps, Graphics
+import pygame, os, time, Options, Views, Maps, Graphics
    
 class EntityHandler():
     def __init__(self, fullscreen, map, player, number_of_players):
