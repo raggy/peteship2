@@ -36,7 +36,7 @@ def main(map, players):
     # Note on possible efficiency improvement: make a list of all ships on screen at the start of the frame
 
     while running:
-        clock.tick(30)
+        clock.tick(60)
         pygame.msg.message
 
         for event in pygame.event.get(pygame.KEYDOWN):
