@@ -90,6 +90,7 @@ def main(map, players):
         for event in pygame.event.get(pygame.QUIT):
             running = False
             
+    entities.graphics.unload()
     pygame.quit()
     
 main(TestMap, 1)

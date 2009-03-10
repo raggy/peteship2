@@ -37,6 +37,6 @@ class GraphicsHandler():
         
         return (self.current_texture, surface.get_width(), surface.get_height()) # tell the ship which integer it needs to use to get rendered, baby
 
-    def unload(self, ship):
-        # is this needed?
-        pass
+    def unload(self):
+        # is this needed? YES!
+         glDeleteTextures(range(self.current_texture))
