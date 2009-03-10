@@ -20,6 +20,7 @@ pygame.init()
 pygame.display.set_caption(Options.NAME, Options.NAME)
 
 def main(map, players):
+
     clock = pygame.time.Clock()
     
     number_of_players = players
@@ -36,6 +37,7 @@ def main(map, players):
     # Note on possible efficiency improvement: make a list of all ships on screen at the start of the frame
 
     while running:
+    
         clock.tick(60) # limit to 60 fps.
         pygame.msg.message
 

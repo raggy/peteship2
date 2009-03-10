@@ -8,6 +8,7 @@
 import pygame, os, Options
         
 class Map():
+
     def __init__(self, entities, mapfile):
         self.entities = entities # link to entities above it & therefore view.
         self.height = mapfile.HEIGHT 
