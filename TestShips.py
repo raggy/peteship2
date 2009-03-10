@@ -16,9 +16,12 @@ class TestShip(Objects.Object):
         self.internal_name = "TestShip"
         self.display_name = "Testicle"
         self.parent_e = parent_e # reference to entities.
+        
         temp = self.parent_e.graphics.load(self) # get texture from graphics class.
+        
         self.texture = temp[0]
         self.left = -temp[1] * 0.5
         self.right =  + self.left
         self.top =  -temp[2] * 0.5
         self.bottom = + self.top
+        print self.internal_name, self.texture, self.left, self.right, self.top, self.bottom
