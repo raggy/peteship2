@@ -73,6 +73,16 @@ class GameView(Objects.Object):
         # END DRAW.
 
     # NO MOVE VIEW? BECAUSE VIEW IS BASED ON AN OBJECT, SO USES THOSE METHODS!
+    # however this is modified to constrain the zoom.
+    def mod_z(self, amount):
+    
+        self.z += amount
+        
+        if self.z > Options.MAX_ZOOM:
+            self.z = Options.MAX_ZOOM
+
+        if self.z < Options.MIN_ZOOM:
+            self.z = Options.MIN_ZOOM
         
     def pan_to(self, x, y, z, r, time):
         # move view over time to an area. To be done.
