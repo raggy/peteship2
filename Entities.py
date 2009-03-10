@@ -19,14 +19,14 @@ class EntityHandler():
         
         self.map = Maps.Map(self, map)
         
-        self.ships = [TestShips.TestShip(self, 1.0, 1.0, 1.0, 0.0), TestShips.TestShip(self, 50.0, 1.0, 1.0, 0.0), TestShips.TestShip(self, 1.0, 50.0, 1.0, 0.0)]
+        self.ships = [TestShips.TestShip(self, 1.0, 1.0, 1.0, 0.0), TestShips.TestShip(self, 25.0, 1.0, 1.0, 0.0), TestShips.TestShip(self, 1.0, 25.0, 1.0, 0.0)]
         
     def select(self):
         pass
     
     def deselect(self):
         pass
-        
+            
 # testing stuff.
         
 # end testing.
