@@ -46,21 +46,20 @@ class GameView(Objects.Object):
         glLoadIdentity()
         
     def draw(self):
-    
+
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
         glLoadIdentity() # clear matrix.
         
         glTranslatef(self.x, self.y, self.z) # translate to camera
         glRotatef(self.r.d(), 0.0, 0.0, 1.0) # rotate to camera.        
         # begin rest of draw
-
-        for ship in parent_e.ships:
+        for ship in self.parent_e.ships:
             glPushMatrix() # always push in!
             
             glTranslatef(ship.x, ship.y, ship.z) # where?
             glRotatef(ship.r.d(), 0.0, 0.0, 1.0) # what rotation?
     #        glColor3f(1.0, 1.0, 1.0) not needed, just here for reference.
-            self.parent_e.graphics.bind(ship.texture)
+            glBindTexture(GL_TEXTURE_2D, ship.texture)
             
             glBegin(GL_QUADS)
             glTexCoord2f(0.0, 0.0); glVertex3f(ship.left,  ship.bottom, 0.0)    # Bottom Left Of The Texture and Quad
