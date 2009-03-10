@@ -5,21 +5,21 @@
 #  Created by Pete Lord on 22/12/2008.
 #  Copyright (c) 2008 __MyCompanyName__. All rights reserved.
 #
-import pygame, os, time, Options, Views, Maps, Graphics
+import pygame, os, time, Options, Views, Maps, Graphics, TestShips
    
 class EntityHandler():
 
     def __init__(self, fullscreen, map, player, number_of_players):
         self.player = player
         self.selected = None # selected ship.
-        self.ships = []
-        self.effects = []
         
         self.view = Views.GameView(fullscreen, self)
+        
+        self.graphics = Graphics.GraphicsHandler()
+        
         self.map = Maps.Map(self, map)
-                
-    def updateMap(self):
-        self.map.updateSurface()
+        
+        self.ships = [TestShips.TestShip(self, 1.0, 1.0, 0.0, 0.0)]
         
     def select(self):
         pass
@@ -32,12 +32,6 @@ class EntityHandler():
 # end testing.
 
 # main stuff.
-
-    def addEffect(self, lifeTime, x, y):
-        self.effects.append(Effects.Effect(self, lifeTime, 0, x, y, 0))
-
-    def addCloud(self, x, y, colour):
-        self.clouds.append(Clouds.Cloud(self, x, y, colour))
         
     def draw(self):
         self.view.draw()

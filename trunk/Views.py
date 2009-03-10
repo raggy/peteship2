@@ -15,7 +15,7 @@ class GameView(Objects.Object):
 
     def __init__(self, fullscreen, parent_e):
     
-        Objects.Object.__init__(self, 0.0, 0.0, -10.0, 0.0) # x,y,z,r
+        Objects.Object.__init__(self, 0.0, 0.0, -15.0, 0.0) # x,y,z,r
         
         self.parent_e = parent_e # reference to parent entities object
         
@@ -25,9 +25,7 @@ class GameView(Objects.Object):
             flags = pygame.DOUBLEBUF | pygame.OPENGL # comment out the last one for epic software
             
         self.screen = pygame.display.set_mode((Options.SCREEN_WIDTH, Options.SCREEN_HEIGHT), flags)
-        
         self.resize((Options.SCREEN_WIDTH, Options.SCREEN_HEIGHT))
-        
         glEnable(GL_TEXTURE_2D)
         glShadeModel(GL_SMOOTH)
         glClearColor(0.0, 0.0, 0.0, 0.0)
@@ -35,8 +33,6 @@ class GameView(Objects.Object):
         glEnable(GL_DEPTH_TEST)
         glDepthFunc(GL_LEQUAL)
         glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
-        
-        self.graphics = Graphics.GraphicsHandler()
         
     def resize(self, (width, height)):
     
@@ -56,20 +52,26 @@ class GameView(Objects.Object):
         
         glTranslatef(self.x, self.y, self.z) # translate to camera
         glRotatef(self.r.d(), 0.0, 0.0, 1.0) # rotate to camera.        
-        glPushMatrix()# begin rest of draw
+        # begin rest of draw
 
+        for ship in parent_e.ships:
+            glPushMatrix() # always push in!
+            
+            glTranslatef(ship.x, ship.y, ship.z) # where?
+            glRotatef(ship.r.d(), 0.0, 0.0, 1.0) # what rotation?
+    #        glColor3f(1.0, 1.0, 1.0) not needed, just here for reference.
+            self.parent_e.graphics.bind(ship.texture)
+            
+            glBegin(GL_QUADS)
+            glTexCoord2f(0.0, 0.0); glVertex3f(ship.left,  ship.bottom, 0.0)    # Bottom Left Of The Texture and Quad
+            glTexCoord2f(1.0, 0.0); glVertex3f(ship.right, ship.bottom, 0.0)    # Bottom Right Of The Texture and Quad
+            glTexCoord2f(1.0, 1.0); glVertex3f(ship.right, ship.top,    0.0)    # Top Right Of The Texture and Quad
+            glTexCoord2f(0.0, 1.0); glVertex3f(ship.left,  ship.top,    0.0)    # Top Left Of The Texture and Quad
+            glEnd()
+            
+            glPopMatrix() #always pop out at end!
         
-        glTranslatef(1.5, 0.0, -5.0)
-#        glColor3f(1.0, 1.0, 1.0)
-        self.graphics.bind(1)
-        glBegin(GL_QUADS)
-        glTexCoord2f(0.0, 0.0); glVertex3f(-1.0, -1.0,  1.0)    # Bottom Left Of The Texture and Quad
-        glTexCoord2f(1.0, 0.0); glVertex3f( 1.0, -1.0,  1.0)    # Bottom Right Of The Texture and Quad
-        glTexCoord2f(1.0, 1.0); glVertex3f( 1.0,  1.0,  1.0)    # Top Right Of The Texture and Quad
-        glTexCoord2f(0.0, 1.0); glVertex3f(-1.0,  1.0,  1.0)    # Top Left Of The Texture and Quad
-        glEnd()
-        
-        glPopMatrix() # END DRAW. END OF ORIGINAL VIEWPOINT TRANSLATE.
+        # END DRAW.
 
     # NO MOVE VIEW? BECAUSE VIEW IS BASED ON AN OBJECT, SO USES THOSE METHODS!
         
