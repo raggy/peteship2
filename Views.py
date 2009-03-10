@@ -15,7 +15,7 @@ class GameView(Objects.Object):
 
     def __init__(self, fullscreen, parent_e):
     
-        Objects.Object.__init__(self, 0.0, 0.0, -15.0, 0.0) # x,y,z,r
+        Objects.Object.__init__(self, 0.0, 0.0, -100.0, 0.0) # x,y,z,r
         
         self.parent_e = parent_e # reference to parent entities object
         
@@ -62,10 +62,10 @@ class GameView(Objects.Object):
             glBindTexture(GL_TEXTURE_2D, ship.texture)
             
             glBegin(GL_QUADS)
-            glTexCoord2f(0.0, 0.0); glVertex3f(ship.left,  ship.bottom, 0.0)    # Bottom Left Of The Texture and Quad
-            glTexCoord2f(1.0, 0.0); glVertex3f(ship.right, ship.bottom, 0.0)    # Bottom Right Of The Texture and Quad
-            glTexCoord2f(1.0, 1.0); glVertex3f(ship.right, ship.top,    0.0)    # Top Right Of The Texture and Quad
-            glTexCoord2f(0.0, 1.0); glVertex3f(ship.left,  ship.top,    0.0)    # Top Left Of The Texture and Quad
+            glTexCoord2f(0.0, 0.0); glVertex3f(ship.left,  ship.top,        0.0)    # Bottom Left Of The Texture and Quad
+            glTexCoord2f(1.0, 0.0); glVertex3f(ship.right, ship.top,        0.0)    # Bottom Right Of The Texture and Quad
+            glTexCoord2f(1.0, 1.0); glVertex3f(ship.right, ship.bottom,     0.0)    # Top Right Of The Texture and Quad
+            glTexCoord2f(0.0, 1.0); glVertex3f(ship.left,  ship.bottom,     0.0)    # Top Left Of The Texture and Quad
             glEnd()
             
             glPopMatrix() #always pop out at end!
