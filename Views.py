@@ -5,7 +5,8 @@
 #  Created by Pete Lord on 22/12/2008.
 #  Copyright (c) 2008 __MyCompanyName__. All rights reserved.
 #
-import pygame, Options, Objects
+
+import pygame, Options, Objects, Graphics
 
 from OpenGL.GLU import *
 from OpenGL.GL import *
@@ -13,7 +14,8 @@ from OpenGL.GL import *
 class GameView(Objects.Object):
 
     def __init__(self, fullscreen, parent_e):
-        Objects.Object.__init__(self, 0.0, 0.0, -5.0, 0.0) # x,y,z,r
+    
+        Objects.Object.__init__(self, 0.0, 0.0, -10.0, 0.0) # x,y,z,r
         
         self.parent_e = parent_e # reference to parent entities object
         
@@ -34,7 +36,10 @@ class GameView(Objects.Object):
         glDepthFunc(GL_LEQUAL)
         glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
         
+        self.graphics = Graphics.GraphicsHandler()
+        
     def resize(self, (width, height)):
+    
         if height==0:
             height=1
         glViewport(0, 0, width, height)
@@ -45,17 +50,18 @@ class GameView(Objects.Object):
         glLoadIdentity()
         
     def draw(self):
+    
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
         glLoadIdentity() # clear matrix.
         
         glTranslatef(self.x, self.y, self.z) # translate to camera
         glRotatef(self.r.d(), 0.0, 0.0, 1.0) # rotate to camera.        
-        
         glPushMatrix()# begin rest of draw
+
         
         glTranslatef(1.5, 0.0, -5.0)
-
 #        glColor3f(1.0, 1.0, 1.0)
+        self.graphics.bind(1)
         glBegin(GL_QUADS)
         glTexCoord2f(0.0, 0.0); glVertex3f(-1.0, -1.0,  1.0)    # Bottom Left Of The Texture and Quad
         glTexCoord2f(1.0, 0.0); glVertex3f( 1.0, -1.0,  1.0)    # Bottom Right Of The Texture and Quad

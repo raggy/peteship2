@@ -5,9 +5,11 @@
 #  Created by Pete Lord on 11/02/2009.
 #  Copyright (c) 2009 __MyCompanyName__. All rights reserved.
 #
+
 import Options, Misc, Angles
 
 class Object():
+
     def __init__(self, x, y, z, r):
         self.x = x
         self.y = y
