@@ -75,7 +75,7 @@ class GameView(Objects.Object):
     # NO MOVE VIEW? BECAUSE VIEW IS BASED ON AN OBJECT, SO USES THOSE METHODS!
     # however this is modified to constrain the zoom.
     def mod_z(self, amount):
-    
+     
         self.z += amount
         
         if self.z > Options.MAX_ZOOM:
