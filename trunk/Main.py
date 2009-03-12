@@ -39,13 +39,17 @@ def main(map, players):
     while running:
     
         clock.tick(60) # limit to 60 fps.
-        pygame.msg.message
 
         for event in pygame.event.get(pygame.KEYDOWN):
             keysHeld[event.key] = True
             
         for event in pygame.event.get(pygame.KEYUP):
             keysHeld[event.key] = False
+            
+        for event in pygame.event.get(pygame.QUIT):
+            running = False
+            
+        pygame.event.clear()
 
         # Check keys
         if keysHeld[pygame.K_UP]:
@@ -61,7 +65,7 @@ def main(map, players):
             entities.view.mod_x(-Options.KEY_SCROLL)
             
         if keysHeld[pygame.K_l]:
-            pass
+            entities.ships[0].mod_r(Options.KEY_ROTATE)
             
         if keysHeld[pygame.K_o]:
             pass
@@ -85,9 +89,6 @@ def main(map, players):
         pygame.display.flip()
 
         if keysHeld[pygame.K_ESCAPE]:
-            running = False
-
-        for event in pygame.event.get(pygame.QUIT):
             running = False
             
     entities.graphics.unload()

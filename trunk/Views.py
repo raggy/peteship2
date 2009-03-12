@@ -51,13 +51,13 @@ class GameView(Objects.Object):
         glLoadIdentity() # clear matrix.
         
         glTranslatef(self.x, self.y, self.z) # translate to camera
-        glRotatef(self.r.d(), 0.0, 0.0, 1.0) # rotate to camera.        
+        glRotatef(self.r.d(), 0.0, 0.0, -1.0) # rotate to camera.        
         # begin rest of draw
         for ship in self.parent_e.ships:
             glPushMatrix() # always push in!
             
             glTranslatef(ship.x, ship.y, ship.z) # where?
-            glRotatef(ship.r.d(), 0.0, 0.0, 1.0) # what rotation?
+            glRotatef(ship.r.d(), 0.0, 0.0, -1.0) # what rotation?
     #        glColor3f(1.0, 1.0, 1.0) not needed, just here for reference.
             glBindTexture(GL_TEXTURE_2D, ship.texture)
             
