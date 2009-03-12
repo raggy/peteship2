@@ -6,7 +6,7 @@
 #  Copyright (c) 2009 Coventry University. All rights reserved.
 #
 
-import Options, Misc, math, Objects, Angles
+import Options, Misc, math, Objects, Angles, os.path
 
 class TestShip(Objects.Object):
     
@@ -17,11 +17,11 @@ class TestShip(Objects.Object):
         self.display_name = "Testicle"
         self.parent_e = parent_e # reference to entities.
         
-        temp = self.parent_e.graphics.load(self) # get texture from graphics class.
+        self.texture_file = os.path.join('Data', self.internal_name)
         
-        self.texture = temp[0]
-        self.left =  -(temp[1] * 0.025)
-        self.right =  (temp[1] * 0.025)
-        self.top =   -(temp[2] * 0.025)
-        self.bottom = (temp[2] * 0.025)
+        self.texture = self.parent_e.graphics.load(self) # request texture from graphics class.
+        self.left =  -3.2
+        self.right =  3.2
+        self.top =   -3.2
+        self.bottom = 3.2
         print self.internal_name, self.texture, self.left, self.right, self.top, self.bottom
