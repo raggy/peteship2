@@ -6,6 +6,6 @@
 #  Copyright (c) 2009 __MyCompanyName__. All rights reserved.
 #
 
-WIDTH = 500
-HEIGHT = 500
+WIDTH = 100
+HEIGHT = 100
 DATA = []
